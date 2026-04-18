@@ -1,21 +1,49 @@
 package org.example;
 
 import org.example.entities.CategoryEntity;
+import org.example.entities.ProductEntity;
 import org.example.utils.HibernateHelper;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 //        var session = HibernateHelper.getSession();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Список категорій:");
+        ReadData(scanner);
+//        ProductEntity p = new ProductEntity();
+//        p.setName("Капучно");
+//        p.setImage("kapuchino.jpg");
+//        p.setPrice(BigDecimal.valueOf(23.56));
+//        var cat = new CategoryEntity();
+//        cat.setId(1);
+//        p.setCategory(cat);
+//        InsertDataGeneric(p);
+        System.out.println("Читання продуктів");
+        ReadDataProduct(scanner);
+
 //        InsertData(scanner);
-        ReadData(scanner);
+//        ReadData(scanner);
 //        DeleteData(scanner);
-        UpdateData(scanner);
-        ReadData(scanner);
+//        UpdateData(scanner);
+//        ReadData(scanner);
 //        session.close();
-        System.out.println("Привіт Java!");
+//        System.out.println("Привіт Java!");
+    }
+
+    public static <MyEntity> void InsertDataGeneric(MyEntity entity)
+    {
+        try(var session = HibernateHelper.getSession()) {
+            //почати транзацію
+            session.beginTransaction();
+            session.persist(entity); //Додати нову категорію
+            //завершити транзацію
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            System.out.printf("Сталася халепа %s", ex.getMessage());
+        }
     }
 
     public static void InsertData(Scanner scanner)
@@ -38,6 +66,25 @@ public class Main {
         }
     }
 
+    public static void ReadDataProduct(Scanner scanner)
+    {
+        try(var session = HibernateHelper.getSession()) {
+            //почати транзацію
+            session.beginTransaction();
+            var list = session.createQuery("from ProductEntity",
+                    ProductEntity.class).getResultList();
+            for (var item : list) {
+                System.out.printf("%d\t%s\t%s\n", item.getId(),
+                        item.getName(), item.getCategory().getName());
+
+            }
+            //завершити транзацію
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            System.out.printf("Сталася халепа %s", ex.getMessage());
+        }
+    }
+
     public static void ReadData(Scanner scanner)
     {
         try(var session = HibernateHelper.getSession()) {
@@ -47,6 +94,8 @@ public class Main {
                     CategoryEntity.class).getResultList();
             for (var item : list) {
                 System.out.printf("%d\t%s\n", item.getId(), item.getName());
+                var products = item.getProducts();
+                System.out.println("Кількість продуктів: " + products.size());
             }
             //завершити транзацію
             session.getTransaction().commit();
