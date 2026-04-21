@@ -24,8 +24,8 @@ public class Main {
 //        System.out.println("Читання продуктів");
 //        ReadDataProduct(scanner);
 
-//        InsertData(scanner);
-//        ReadData(scanner);
+        InsertData(scanner);
+        ReadData(scanner);
 //        DeleteData(scanner);
 //        UpdateData(scanner);
 //        ReadData(scanner);
@@ -94,8 +94,8 @@ public class Main {
                     CategoryEntity.class).getResultList();
             for (var item : list) {
                 System.out.printf("%d\t%s\n", item.getId(), item.getName());
-                var products = item.getProducts();
-                System.out.println("Кількість продуктів: " + products.size());
+                //var products = item.getProducts();
+                //System.out.println("Кількість продуктів: " + products.size());
             }
             //завершити транзацію
             session.getTransaction().commit();
