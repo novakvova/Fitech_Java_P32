@@ -21,8 +21,8 @@ public class Main {
 //        cat.setId(1);
 //        p.setCategory(cat);
 //        InsertDataGeneric(p);
-        System.out.println("Читання продуктів");
-        ReadDataProduct(scanner);
+//        System.out.println("Читання продуктів");
+//        ReadDataProduct(scanner);
 
 //        InsertData(scanner);
 //        ReadData(scanner);
