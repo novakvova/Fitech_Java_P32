@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        var session = HibernateHelper.getSession();
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in,  java.nio.charset.StandardCharsets.UTF_8);
         System.out.println("Список категорій:");
         ReadData(scanner);
 //        ProductEntity p = new ProductEntity();
@@ -55,6 +55,7 @@ public class Main {
             String name = scanner.nextLine();
             if(name.isEmpty())
                 return;
+            System.out.println("Name "+ name);
             var cat = new CategoryEntity(name);
             //context.Categories.Add(cat); // як у C#
             session.persist(cat); //Додати нову категорію
