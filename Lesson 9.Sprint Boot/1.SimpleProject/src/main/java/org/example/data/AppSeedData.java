@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AppSeedData {
 
+
     //Цей метод буде Seed даних у БД
     //Цей метод в java Spring буде зпускати автоматично
     @PostConstruct
