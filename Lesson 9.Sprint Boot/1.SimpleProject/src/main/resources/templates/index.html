@@ -11,12 +11,18 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h1 class="text-3xl font-bold mb-4 text-gray-900">
-        Тут колись буде головна сторінка, а зараз дивись на котика :)
+    <h1 class="text-3xl font-bold mb-4 text-gray-900 text-center">
+        Список жанрів.
     </h1>
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGpwdDUwbmJhaGllcGI2NXVvM2dtMHpibDhxbjVhcmM2enV0cnV4YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3nbxypT20Ulmo/giphy.gif"
-         alt="Милий котик"
-         class="mx-auto rounded-lg shadow-lg max-w-sm">
+    <div th:if="${#lists.isEmpty(genres)}">
+        <p class="text-gray-500">Жанри відсутні</p>
+    </div>
+    <ul class="list-disc pl-6" th:if="${!#lists.isEmpty(genres)}">
+        <li th:each="genre : ${genres}" class="mb-2">
+            <span class="font-bold" th:text="${genre.name}"></span>
+            <p class="text-gray-600" th:text="${genre.description}"></p>
+        </li>
+    </ul>
 </div>
 </body>
 </html>

@@ -62,6 +62,15 @@
             <artifactId>lombok</artifactId>
             <version>1.18.46</version>
         </dependency>
+
+
+
+        <!-- Source: https://mvnrepository.com/artifact/net.datafaker/datafaker -->
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>2.5.4</version>
+        </dependency>
     </dependencies>
 
 </project>
