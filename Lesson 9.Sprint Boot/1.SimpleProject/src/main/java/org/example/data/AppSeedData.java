@@ -1,7 +1,6 @@
 package org.example.data;
 
 import com.mpatric.mp3agic.*;
-import groovy.io.FileType;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
@@ -12,7 +11,6 @@ import org.example.repositories.ISongRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

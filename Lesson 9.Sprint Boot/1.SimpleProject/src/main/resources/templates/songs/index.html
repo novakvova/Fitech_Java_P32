@@ -24,6 +24,13 @@
                 <span class="font-semibold">Альбом:</span>
                 <span th:text="${song.album}"></span>
             </p>
+
+            <div class="mt-3">
+                <audio controls>
+                    <source th:src="@{'/mp3Songs/' + ${song.fileName}}" type="audio/mpeg">
+                    Ваш браузер не підтримує аудіо.
+                </audio>
+            </div>
         </div>
     </div>
 </div>
