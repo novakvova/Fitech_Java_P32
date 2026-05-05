@@ -26,13 +26,27 @@
             </p>
 
             <div class="mt-3">
-                <audio controls>
+                <audio class="audio-player" controls>
                     <source th:src="@{'/mp3Songs/' + ${song.fileName}}" type="audio/mpeg">
                     Ваш браузер не підтримує аудіо.
                 </audio>
             </div>
         </div>
     </div>
+    <script>
+        const players = document.querySelectorAll('.audio-player');
+
+        players.forEach(player => {
+            player.addEventListener('play', () => {
+                players.forEach(other => {
+                    if (other !== player) {
+                        other.pause();
+                        other.currentTime = 0; // опціонально (скидає на початок)
+                    }
+                });
+            });
+        });
+    </script>
 </div>
 </body>
 </html>
