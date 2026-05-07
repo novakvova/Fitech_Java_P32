@@ -2,6 +2,8 @@
 ```
 mvn spring-boot:run
 
+mvn clean install -U
+
 mvn clean
 mvn package
 java -jar target/p32.jar
