@@ -23,7 +23,18 @@
         </div>
 
         <div class="flex gap-4 items-center" sec:authorize="isAuthenticated()">
+            <img th:if="${#authentication.principal.image != null}"
+                 th:src="@{'/uploads/small/' + ${#authentication.principal.image}}"
+                 class="w-10 h-10 rounded-full border border-white shadow"
+                 alt="Avatar">
+
+            <img th:if="${#authentication.principal.image == null}"
+                 src="https://wildlife.by/upload/sites/default/files/1_72.jpg"
+                 class="w-10 h-10 rounded-full border border-white shadow"
+                 alt="Default Avatar">
+
             <span class="font-medium" th:text="${#authentication.name}">Username</span>
+
             <form th:action="@{/logout}" method="post">
                 <button type="submit"
                         class="bg-white text-green-600 px-3 py-1 rounded hover:bg-green-100 transition">
