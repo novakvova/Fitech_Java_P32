@@ -1,0 +1,25 @@
+https://hardhat.org/hardhat-runner/docs/getting-started#installation
+
+npm init
+npm install --save-dev hardhat
+
+npm outdated
+
+npx hardhat init
+
+
+npx hardhat
+
+npx hardhat node
+
+npm i ethers
+
+npx hardhat run scripts\demo.js --network localhost
+
+npx hardhat compile
+
+MetaMask - install chrome
+
+
+> Create an empty hardhat.config.js
+dir

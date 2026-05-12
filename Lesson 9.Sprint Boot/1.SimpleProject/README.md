@@ -39,3 +39,25 @@ dos2unix java-p32.sh
 chmod +x java-p32.sh
 ./java-p32.sh
 ```
+
+# ngix config - /etc/nginx/sites-available/default
+```
+server {
+server_name   javap32.itstep.click *.javap32.itstep.click;
+location / {
+        proxy_pass         http://localhost:5797;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+
+
+sudo systemctl restart nginx
+
+
+```
